@@ -44,4 +44,14 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+
+const express = require('express');
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/yourdb', { useNewUrlParser: true });
+const app = express();
+app.use(express.json());
+
+app.use('/products', require('./routes/products'));
+
 module.exports = app;
